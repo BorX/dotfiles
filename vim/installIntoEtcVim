@@ -1,0 +1,17 @@
+#!/bin/bash
+
+[ -w /etc/vim ] || {
+	echo >&2 '/etc/vim not writable'
+	exit 1
+}
+
+SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)"
+cd /etc/vim
+
+saveAndLink() {
+	local file="$1"
+	[ -e "$file" ] && mv -v "$file"{,_$(date +%Y%m%d-%H%M)}
+	ln -sv "$SCRIPT_PATH/$file"
+}
+
+saveAndLink vimrc.local
