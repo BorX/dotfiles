@@ -3,12 +3,21 @@
 SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)"
 cd ~
 
-saveAndLink() {
+save() {
 	local file="$1"
 	[ -e "$file" ] && mv -v "$file"{,_$(date +%Y%m%d-%H%M)}
-	ln -sv "$SCRIPT_PATH/$file"
+}
+
+saveAndLink() {
+	local file="$1"
+	save "$file"
+	ln -svf "$SCRIPT_PATH/$file"
 }
 
 saveAndLink .gitconfig
 saveAndLink .htoprc
 saveAndLink .toprc
+
+save .bashrc
+ln -svf /etc/profile .bashrc
+

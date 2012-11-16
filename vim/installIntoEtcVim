@@ -11,7 +11,7 @@ cd /etc/vim
 saveAndLink() {
 	local file="$1"
 	[ -e "$file" ] && mv -v "$file"{,_$(date +%Y%m%d-%H%M)}
-	ln -sv "$SCRIPT_PATH/$file"
+	ln -svf "$SCRIPT_PATH/$file"
 }
 
 saveAndLink vimrc.local
