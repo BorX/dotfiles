@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[ -z "$PS1" ] && return
+
 # LS
 alias l='ls'
 alias ll='ls -l'

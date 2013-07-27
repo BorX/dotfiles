@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[ -z "$PS1" ] && return
+
 tree() {
 	[ -n "$1" ] && REP=$1 || REP="."
 	find $REP | sed 's/[^/]*\//|   /g;s/| *\([^| ]\)/+--- \1/'
