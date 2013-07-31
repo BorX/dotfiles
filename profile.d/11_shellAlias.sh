@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ -z "$PS1" ] && return
+[ "$SHELL" == '/bin/bash' ] || return
 
 # LS
 alias l='ls'

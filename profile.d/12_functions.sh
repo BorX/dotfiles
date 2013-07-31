@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ -z "$PS1" ] && return
+[ "$SHELL" == '/bin/bash' ] || return
 
 tree() {
 	[ -n "$1" ] && REP=$1 || REP="."
