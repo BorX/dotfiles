@@ -39,3 +39,4 @@ alias gc='git commit -v'
 alias gst='git status'
 alias gadd='git add'
 
+alias acp='apt-cache policy'
