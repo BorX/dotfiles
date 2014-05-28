@@ -25,9 +25,13 @@ archive() {
 	done
 }
 
-watchlog() {
-	tail -${2:-300} '/var/log/'$1 | lwatch -i-
+logwatch() {
+	local file="$1"
+	[ -n "$file" ] || file='syslog'
+	sudo tail -fn+0 "/var/log/$file" | lwatch -i-
 }
+
+hl() { sed "s/\($1\)/$(tput setaf 1)$(tput rev)\1$(tput sgr0)/g" </dev/stdin; }
 
 alias showIP='wget http://checkip.dyndns.org/ -O - -o /dev/null | grep -Eo "([0-9]+\.?){4}"'
 
