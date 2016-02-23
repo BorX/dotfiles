@@ -31,7 +31,7 @@ logwatch() {
 	sudo tail -fn+0 "/var/log/$file" | ccze -A
 }
 
-hl() { sed "s/\($1\)/$(tput setaf 1)$(tput rev)\1$(tput sgr0)/g" </dev/stdin; }
+hl() { sed "s'\($1\)'$(tput setaf 1)$(tput rev)\1$(tput sgr0)'g" </dev/stdin; }
 
 alias showIP='wget http://checkip.dyndns.org/ -O - -o /dev/null | grep -Eo "([0-9]+\.?){4}"'
 
