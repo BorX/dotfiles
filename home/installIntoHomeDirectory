@@ -15,8 +15,6 @@ saveAndLink() {
 }
 
 saveAndLink .gitconfig
-saveAndLink .htoprc
-saveAndLink .toprc
 
 save .bashrc
 ln -svf /etc/profile .bashrc
