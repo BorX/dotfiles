@@ -28,7 +28,7 @@ archive() {
 logwatch() {
 	local file="$1"
 	[ -n "$file" ] || file='syslog'
-	sudo tail -fn+0 "/var/log/$file" | lwatch -i-
+	sudo tail -fn+0 "/var/log/$file" | ccze -A
 }
 
 hl() { sed "s/\($1\)/$(tput setaf 1)$(tput rev)\1$(tput sgr0)/g" </dev/stdin; }
