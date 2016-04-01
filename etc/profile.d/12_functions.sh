@@ -8,7 +8,7 @@ tree() {
 }
 
 alias upgradesafe='sudo aptitude update ; sudo aptitude safe-upgrade' 
-alias upgradefull='sudo aptitude update ; sudo aptitude full-upgrade'
+alias upgrade='sudo aptitude update ; sudo aptitude full-upgrade'
 alias deborphan='deborphan -Pa -p 0 | sort -k 3'
 backup() {
 	[ $# -lt 1 ] && { echo "Usage: backup file1 [file2 [...]]; return 1; }
