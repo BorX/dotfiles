@@ -7,22 +7,28 @@ wget -qO- https://raw.githubusercontent.com/BorX/dotfiles/master/directInit.sh |
 # Cloning install
 Clone repo and link scripts and config files from /etc/ to the clone
 ```
-# git clone https://github.com/BorX/dotfiles.git /data/dotfiles
+INSTALL_DIR='/data/dotfiles'
+git clone https://github.com/BorX/dotfiles.git "$INSTALL_DIR"
 Cloning into '/data/dotfiles'...
-remote: Counting objects: 93, done.
-remote: Compressing objects: 100% (7/7), done.
-remote: Total 93 (delta 0), reused 0 (delta 0), pack-reused 86
-Unpacking objects: 100% (93/93), done.
+remote: Counting objects: 96, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 96 (delta 0), reused 0 (delta 0), pack-reused 86
+Unpacking objects: 100% (96/96), done.
 Checking connectivity... done.
 
-# /data/dotfiles/etc/profile.d/installIntoEtcProfileD
+$INSTALL_DIR/etc/profile.d/installIntoEtcProfileD
 
-# /data/dotfiles/etc/vim/installIntoEtcVim
+$INSTALL_DIR/etc/vim/installIntoEtcVim
+‘vimrc.local’ -> ‘vimrc.local_20170130-1700’
 ‘./vimrc.local’ -> ‘/data/dotfiles/etc/vim/vimrc.local’
 
-# /data/dotfiles/home/installIntoHomeDirectory
-‘.gitconfig’ -> ‘.gitconfig_20170130-1650’
+$INSTALL_DIR/home/installIntoHomeDirectory
+‘.gitconfig’ -> ‘.gitconfig_20170130-1701’
 ‘./.gitconfig’ -> ‘/data/dotfiles/home/.gitconfig’
-‘.bashrc’ -> ‘.bashrc_20170130-1650’
+‘.bashrc’ -> ‘.bashrc_20170130-1701’
 ‘.bashrc’ -> ‘/etc/profile’
+
+$INSTALL_DIR/permissions.sh
+
+$INSTALL_DIR/uninstall.sh
 ```
