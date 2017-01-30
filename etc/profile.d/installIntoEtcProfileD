@@ -11,11 +11,13 @@ SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)"
 
 cat <<EOF >"$SCRIPT_FILE_NAME"
 #!/bin/bash
-[ -d "$SCRIPT_PATH" ] && [ -r "$SCRIPT_PATH" ] && [ -x "$SCRIPT_PATH" ] || exit 1
-for i in "$SCRIPT_PATH"/*.sh; do
-	[ -r "\$i" ] && . "\$i"
-done
-unset i
+SCRIPT_PATH='$SCRIPT_PATH'
+[ -d "\$SCRIPT_PATH" ] && [ -r "\$SCRIPT_PATH" ] && [ -x "\$SCRIPT_PATH" ] && {
+	for i in "\$SCRIPT_PATH"/*.sh; do
+		[ -r "\$i" ] && . "\$i"
+	done
+	unset i
+} || echo >&2 "No access to \$SCRIPT_PATH"
 EOF
-chmod a+r "$SCRIPT_FILE_NAME"
 
+chmod a+r "$SCRIPT_FILE_NAME"

@@ -15,3 +15,5 @@ saveAndLink() {
 }
 
 saveAndLink vimrc.local
+
+chmod a+r  /etc/vim/vimrc.local
