@@ -2,6 +2,7 @@
 
 ROOT_DIR="$(dirname "$0")"
 
+chmod a+x  "$ROOT_DIR"
 chmod a+x  "$ROOT_DIR"/etc/
 chmod a+rx "$ROOT_DIR"/etc/profile.d
 chmod a+r  "$ROOT_DIR"/etc/profile.d/01_history.sh
