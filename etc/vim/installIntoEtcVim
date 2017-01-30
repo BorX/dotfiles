@@ -16,4 +16,7 @@ saveAndLink() {
 
 saveAndLink vimrc.local
 
-chmod a+r  /etc/vim/vimrc.local
+chmod a+x "$SCRIPT_PATH"
+chmod a+x "$SCRIPT_PATH/etc"
+chmod a+x "$SCRIPT_PATH/etc/vim"
+chmod a+r "$SCRIPT_PATH/etc/vim/vimrc.local"
