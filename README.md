@@ -3,6 +3,9 @@ Download scripts and config files into /etc/
 ```
 wget -qO- https://raw.githubusercontent.com/BorX/dotfiles/master/directInit.sh | bash
 ```
+```
+wget -qO- https://raw.githubusercontent.com/BorX/dotfiles/master/uninstall.sh | bash
+```
 # Cloning install
 Clone repo and link scripts and config files from /etc/ to the clone
 ```

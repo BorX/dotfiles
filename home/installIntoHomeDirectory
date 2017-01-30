@@ -17,7 +17,7 @@ saveAndLink() {
 save .bashrc
 ln -svf /etc/profile .bashrc
 
+chmod a+r "$SCRIPT_PATH/.gitconfig"
 chmod a+x "$SCRIPT_PATH"
-chmod a+x "$SCRIPT_PATH/home"
-chmod a+r "$SCRIPT_PATH/home/.gitconfig"
+chmod a+x "$SCRIPT_PATH/.."
 saveAndLink .gitconfig
