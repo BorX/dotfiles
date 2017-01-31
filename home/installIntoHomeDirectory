@@ -1,23 +1,19 @@
 #!/bin/bash
 
+USER_DEST="$1"
+[ -z "$USER_DEST" ] && USER_DEST="$USER"
+DIR_DEST="$(getent passwd "$USER_DEST" | cut -d: -f6)"
+
 SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)"
-cd ~
 
-save() {
-	local file="$1"
-	[ -e "$file" ] && mv -v "$file"{,_$(date +%Y%m%d-%H%M)}
-}
+chmod -v a+r "$SCRIPT_PATH/.gitconfig"
+chmod -v a+x "$SCRIPT_PATH"
+chmod -v a+x "$SCRIPT_PATH/.."
 
-saveAndLink() {
-	local file="$1"
-	save "$file"
-	ln -svf "$SCRIPT_PATH/$file"
-}
+[ -f "$DIR_DEST/.bashrc" ]    && [ ! -h "$DIR_DEST/.bashrc" ]    && mv -v "$DIR_DEST"/.bashrc{,_$(date +%Y%m%d-%H%M)}
+ln -sfv '/etc/profile'             "$DIR_DEST/.bashrc"
+chown -h "$USER_DEST":"$(id -gn $USER_DEST)" "$DIR_DEST/.bashrc"
 
-save .bashrc
-ln -svf /etc/profile .bashrc
-
-chmod a+r "$SCRIPT_PATH/.gitconfig"
-chmod a+x "$SCRIPT_PATH"
-chmod a+x "$SCRIPT_PATH/.."
-saveAndLink .gitconfig
+[ -f "$DIR_DEST/.gitconfig" ] && [ ! -h "$DIR_DEST/.gitconfig" ] && mv -v "$DIR_DEST"/.gitconfig{,_$(date +%Y%m%d-%H%M)}
+ln -sfv "$SCRIPT_PATH/.gitconfig"  "$DIR_DEST/.gitconfig"
+chown -h "$USER_DEST":"$(id -gn $USER_DEST)" "$DIR_DEST/.gitconfig"

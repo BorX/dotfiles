@@ -5,7 +5,7 @@ PROJECT_URL='https://raw.githubusercontent.com/BorX/dotfiles/master'
 testWritable() {
 	local dir="$1"
 	[ -w "$dir" ] || {
-		echo >&2 "$dir not writable"
+		echo >&2 "$dir not writable for user $USER"
 		return 1
 	}
 }

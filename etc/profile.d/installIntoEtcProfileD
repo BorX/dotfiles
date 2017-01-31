@@ -3,12 +3,13 @@
 SCRIPT_FILE_NAME='/etc/profile.d/BorX.sh'
 
 [ -w /etc/profile.d ] || {
-	echo >&2 '/etc/profile.d not writable'
+	echo >&2 "/etc/profile.d not writable for user $USER"
 	exit 1
 }
 
 SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)"
 
+echo >&2 "Creating $SCRIPT_FILE_NAME"
 cat <<EOF >"$SCRIPT_FILE_NAME"
 #!/bin/bash
 SCRIPT_PATH='$SCRIPT_PATH'
@@ -20,13 +21,13 @@ SCRIPT_PATH='$SCRIPT_PATH'
 } || echo >&2 "No access to \$SCRIPT_PATH"
 EOF
 
-chmod a+r "$SCRIPT_FILE_NAME"
-chmod a+rx "$SCRIPT_PATH"
-chmod a+r  "$SCRIPT_PATH/01_history.sh"
-chmod a+r  "$SCRIPT_PATH/02_term.sh"
-chmod a+r  "$SCRIPT_PATH/11_shellAlias.sh"
-chmod a+r  "$SCRIPT_PATH/12_functions.sh"
-chmod a+r  "$SCRIPT_PATH/21_editors.sh"
-chmod a+r  "$SCRIPT_PATH/31_color.sh"
-chmod a+x  "$SCRIPT_PATH/.."
-chmod a+x  "$SCRIPT_PATH/../.."
+chmod -v a+r  "$SCRIPT_FILE_NAME"
+chmod -v a+rx "$SCRIPT_PATH"
+chmod -v a+r  "$SCRIPT_PATH/01_history.sh"
+chmod -v a+r  "$SCRIPT_PATH/02_term.sh"
+chmod -v a+r  "$SCRIPT_PATH/11_shellAlias.sh"
+chmod -v a+r  "$SCRIPT_PATH/12_functions.sh"
+chmod -v a+r  "$SCRIPT_PATH/21_editors.sh"
+chmod -v a+r  "$SCRIPT_PATH/31_color.sh"
+chmod -v a+x  "$SCRIPT_PATH/.."
+chmod -v a+x  "$SCRIPT_PATH/../.."
