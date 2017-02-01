@@ -6,6 +6,8 @@
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+export TMOUT=0
+
 set -o vi
 
 # PS1
