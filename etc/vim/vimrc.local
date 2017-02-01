@@ -146,7 +146,7 @@ set background&
 " ignore these files while expanding wild chars
 set wildignore=*.o,*.class,*.pyc
 
-set autoindent " auto indentation
+"BorXset autoindent " auto indentation
 set copyindent " copy the previous indentation on autoindenting
 set smarttab " insert tabs on the start of a line according to context
 autocmd! bufwritepost .vimrc source ~/.vimrc " auto reload vimrc when editing it
