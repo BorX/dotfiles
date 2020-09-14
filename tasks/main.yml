@@ -1,0 +1,38 @@
+---
+- name: '/etc/vim/vimrc'
+  copy:
+    backup: yes
+    src:    'etc/vim/vimrc.local'
+    dest:   '/etc/vim/vimrc.local'
+    owner:  'root'
+    group:  'root'
+    mode:   '0644'
+
+- name: '/etc/profile.d/'
+  copy:
+    backup: yes
+    src:    "etc/profile.d/{{ item }}"
+    dest:   "/etc/profile.d/{{ item }}"
+    owner:  'root'
+    group:  'root'
+    mode:   '0644'
+  with_items:
+  - 01_history.sh
+  - 02_term.sh
+  - 11_shellAlias.sh
+  - 12_functions.sh
+  - 21_editors.sh
+  - 31_color.sh
+
+- name: '.gitconfig'
+  copy:
+    backup: yes
+    src:    'home/.gitconfig'
+    dest:   "{{ item.path }}"
+    owner:  "{{ item.owner }}"
+    group:  "{{ item.owner }}"
+    mode:   '0640'
+  with_items:
+  - { path: '/home/borx', owner: 'borx' }
+  - { path: '/root',      owner: 'root' }
+
